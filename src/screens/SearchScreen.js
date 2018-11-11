@@ -1,13 +1,14 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { Component } from 'react';
+import SearchInput from '../components/SearchInput'
 
 
-const SearchScreen = (props) => {
-	return(
-		<View>
-			<Text>This is the search screen</Text>
-		</View>
-	)
+
+class SearchScreen extends Component {
+  render() {
+    return (
+    	<SearchInput />
+    );
+  }
 }
 
 export default SearchScreen

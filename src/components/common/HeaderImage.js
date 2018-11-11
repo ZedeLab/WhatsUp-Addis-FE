@@ -26,7 +26,7 @@ const HeaderImage = (props) => {
 					name="md-arrow-back" 
 					color="white" 
 					size={35} 
-					onPress={() => props.navigation.goBack(null)} style={styles.iconStyle}
+					onPress={props.fromCategory ? props.goBack : () => props.navigation.goBack(null)} style={styles.iconStyle}
 				/>
 				<Text style={headerTitleStyle}>{props.title}</Text>
 			</ImageBackground>

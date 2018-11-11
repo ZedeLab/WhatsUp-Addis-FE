@@ -5,8 +5,54 @@ import EventScreen from '../screens/EventScreen'
 import SearchScreen from '../screens/SearchScreen'
 import EventsListScreen from '../screens/EventsListScreen'
 import MapScreen from '../screens/MapScreen'
+import NearYou from '../screens/NearYou'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { createMaterialTopTabNavigator, createStackNavigator, ReactNavigationBackButton } from 'react-navigation'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
+
+const ListPageBottomTab = createMaterialTopTabNavigator({
+	All:{
+		screen:EventsListScreen,
+		navigationOptions:{
+			tabBarIcon:({tintColor}) => (
+				<Icon name="ios-menu" color={tintColor} size={24}/>
+			),
+		}
+	},
+	['Near you']:{
+		screen:NearYou,
+		navigationOptions:{
+			tabBarIcon:({tintColor}) => {
+				return <EvilIcons name="location" color={tintColor} size={26} />
+			}
+		}
+	},
+	Search:{
+		screen:SearchScreen,
+		navigationOptions:{
+			tabBarIcon:({tintColor}) => {
+				return <Icon name="ios-search" color={tintColor} size={24} />
+			}
+		}
+	}
+}, 
+	{
+		initialRouteName:'All',
+		tabBarPosition:'bottom',
+		tabBarOptions:{
+			activeTintColor:'#161c28',
+		   inactiveTintColor:'grey',
+			showLabel:true,
+			style:{
+				backgroundColor:'#fff',
+				paddingBottom:0
+			},
+			indicatorStyle:{
+				backgroundColor:null
+			},
+			showIcon:true
+		}
+})
 
 
 const BottomTab = createMaterialTopTabNavigator({
@@ -38,12 +84,13 @@ const BottomTab = createMaterialTopTabNavigator({
 		initialRouteName:'Home',
 		tabBarPosition:'bottom',
 		tabBarOptions:{
-			activeTintColor:'#1C2331',
+			activeTintColor:'#161c28',
 		   inactiveTintColor:'grey',
 			showLabel:false,
 			style:{
 				backgroundColor:'#fff',
-				paddingBottom:0
+				padding:0,
+				margin:0
 			},
 			indicatorStyle:{
 				backgroundColor:null
@@ -61,9 +108,12 @@ const Router = createStackNavigator({
 		}
   	},
   	ListPage:{
-  		screen:EventsListScreen,
+  		screen:ListPageBottomTab,
   		navigationOptions:{
-  			headerLeft:null,
+  			header:null,
+  			headerStyle:{
+  				backgroundColor:'transparent'
+  			}
   		}
   	},
   	Event:{

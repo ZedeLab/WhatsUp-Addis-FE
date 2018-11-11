@@ -10,13 +10,17 @@ class EventsListScreen extends Component{
 	}
 
 	static navigationOptions = ({navigation}) => {
+
 		const {params = {}} = navigation.state
 		return {
-			header: (props) => <HeaderImage {...props} image={params.image} title={params.title}/>,
+			header:null,
 			headerStyle:{
-				backgroundColor:'transparent',
+				backgroundColor:'transparent'
 			},
-			headerTintColor:'#1a1a1a'
+			headerTintStyle:{
+				height:0
+			},
+			headerLeft:null
 		}
 	}
 
@@ -29,22 +33,31 @@ class EventsListScreen extends Component{
 
 	render(){
 		return(
-			<ScrollView>
-				<View style={{flex:1, marginTop:30}}>
-					<View style={{alignItems:'center'}}>
-						<Text style={{fontSize:28}}>{this.props.navigation.state.params.title} in Addis</Text>
+
+			<View style={{flex:1}}>
+				<HeaderImage 
+					title={this.props.navigation.state.params.title} 
+					image={this.props.navigation.state.params.headerImage}
+					goBack={() => this.props.navigation.navigate('BottomTab')}
+					fromCategory={true}
+				/>
+				<ScrollView>
+					<View style={{flex:1, marginTop:30}}>
+						<View style={{alignItems:'center'}}>
+							<Text style={{fontSize:28}}>{this.props.navigation.state.params.title} in Addis</Text>
+						</View>
+						<EventCard 
+							onPress={(name, image) => this.props.navigation.navigate('Event', {title:name, headerImage:image})}
+						/>
+						<EventCard 
+							onPress={(name, image) => this.props.navigation.navigate('Event', {title:name, headerImage:image})}
+						/>
+						<EventCard 
+							onPress={(name, image) => this.props.navigation.navigate('Event', {title:name, headerImage:image})}
+						/>
 					</View>
-					<EventCard 
-						onPress={(name, image) => this.props.navigation.navigate('Event', {title:name, headerImage:image})}
-					/>
-					<EventCard 
-						onPress={(name, image) => this.props.navigation.navigate('Event', {title:name, headerImage:image})}
-					/>
-					<EventCard 
-						onPress={(name, image) => this.props.navigation.navigate('Event', {title:name, headerImage:image})}
-					/>
-				</View>
-			</ScrollView>
+				</ScrollView>
+			</View>
 		)
 	}
 }
