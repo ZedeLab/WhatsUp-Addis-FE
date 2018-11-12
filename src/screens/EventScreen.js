@@ -44,7 +44,7 @@ class EventScreen extends Component{
 			<View style={styles.mapCard}>
 
 				<ScrollView>
-					 <Button block iconLeft style={{marginTop:15, backgroundColor:"#23dd42"}} onPress={this.toggleModal}>
+					 <Button block iconLeft style={{marginTop:15, paddingHorizontal:5, backgroundColor:"#23dd42"}} onPress={this.toggleModal}>
 					 	<EvilIcons name="location" color="white" size={26} />
 		            <Text>View Map</Text>
 		          </Button>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
 	},
 	eventDescription:{
 		flex:1,
-		padding:20
+		marginVertical:10
 	}
 })
 

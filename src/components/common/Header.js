@@ -2,8 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 
-
 const Header = (props) => {
+
   let headerTextStyles = styles.headerText;
   if(props.fontSize){
     headerTextStyles = {fontSize:20, color:'#1C2331', fontWeight:'bold'}

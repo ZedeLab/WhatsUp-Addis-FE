@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, Button, ScrollView } from 'react-native'
 import Header from '../components/common/Header'
-
+import EventCard from '../components/common/EventCard'
 
 class MainScreen extends Component {
 
@@ -9,16 +9,16 @@ class MainScreen extends Component {
     return (
       <View style={styles.container}>
         <Header headerText={'WhatsUp Addis'} />
-        <Text style={styles.textStyle}>
-          New and Featured Places will appear here
-        </Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
 
+const styles = StyleSheet.create({
+  container:{
+    flex:1
+  }
 });
 
 export default MainScreen

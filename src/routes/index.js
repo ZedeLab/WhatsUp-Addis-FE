@@ -4,7 +4,6 @@ import CategoryScreen from '../screens/CategoryScreen'
 import EventScreen from '../screens/EventScreen'
 import SearchScreen from '../screens/SearchScreen'
 import EventsListScreen from '../screens/EventsListScreen'
-import MapScreen from '../screens/MapScreen'
 import NearYou from '../screens/NearYou'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { createMaterialTopTabNavigator, createStackNavigator, ReactNavigationBackButton } from 'react-navigation'
@@ -42,7 +41,7 @@ const ListPageBottomTab = createMaterialTopTabNavigator({
 		tabBarOptions:{
 			activeTintColor:'#161c28',
 		   inactiveTintColor:'grey',
-			showLabel:true,
+			showLabel:false,
 			style:{
 				backgroundColor:'#fff',
 				paddingBottom:0
