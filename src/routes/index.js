@@ -9,6 +9,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { createMaterialTopTabNavigator, createStackNavigator, ReactNavigationBackButton } from 'react-navigation'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 
+
+
 const ListPageBottomTab = createMaterialTopTabNavigator({
 	All:{
 		screen:EventsListScreen,
@@ -39,9 +41,14 @@ const ListPageBottomTab = createMaterialTopTabNavigator({
 		initialRouteName:'All',
 		tabBarPosition:'bottom',
 		tabBarOptions:{
-			activeTintColor:'#161c28',
+			activeTintColor:'#090b35',
 		   inactiveTintColor:'grey',
-			showLabel:false,
+			showLabel:true,
+			labelStyle:{
+				fontSize:10,
+				padding:0,
+				margin:0,
+			},
 			style:{
 				backgroundColor:'#fff',
 				paddingBottom:0
@@ -83,7 +90,7 @@ const BottomTab = createMaterialTopTabNavigator({
 		initialRouteName:'Home',
 		tabBarPosition:'bottom',
 		tabBarOptions:{
-			activeTintColor:'#161c28',
+			activeTintColor:'#090b35',
 		   inactiveTintColor:'grey',
 			showLabel:false,
 			style:{

@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Button, ScrollView, FlatList } from 'react-native'
 import Header from '../components/common/Header'
 import CardOverlay from '../components/CardOverlay'
-import event from '../imgs/events.jpg'
-import club from '../imgs/clubs.jpg'
-import hotel from '../imgs/hotel.jpg'
-import cafe from '../imgs/cafe.jpg'
-import kids from '../imgs/kids.jpg'
-import cinema from '../imgs/cinema.jpg'
+import { categories } from '../config/categories'
+
+
 
 class CategoryScreen extends Component{
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -18,36 +17,17 @@ class CategoryScreen extends Component{
          </View>
          <ScrollView>
            <View style={styles.overlayCard}>
-               <CardOverlay 
-                  cardText={'Events'} background={event} 
-                  onPress={() => this.props.navigation.navigate('ListPage', {title:'Events', headerImage:event})}
-               />
-               <CardOverlay 
-                  cardText={'Cinemas'} 
-                  background={cinema}
-                  onPress={() => this.props.navigation.navigate('ListPage', {title:'Cinemas', headerImage:cinema})}
-                />
-               <CardOverlay 
-                  cardText={'Hotels'} 
-                  background={hotel}
-                  onPress={() => this.props.navigation.navigate('ListPage', {title:'Hotels', headerImage:hotel})}
-                />
-               <CardOverlay 
-                  cardText={'Cafes'} 
-                  background={cafe} 
-                  onPress={() => this.props.navigation.navigate('ListPage', {title:'Cafes', headerImage:cafe})}
-                />
-               <CardOverlay 
-                  cardText={'Clubs/Lounges'} 
-                  background={club}
-                  onPress={() => this.props.navigation.navigate('ListPage', {title:'Club/Lounges', headerImage:club})}
-                />
-               <CardOverlay 
-                  cardText={'Kids'} 
-                  background={kids}
-                  onPress={() => this.props.navigation.navigate('ListPage', {title:'Kids', headerImage:kids})}
-                />
-
+              <FlatList 
+                data={categories}
+                renderItem = {({item}) => (
+                    <CardOverlay 
+                      cardText={item.title} 
+                      background={item.image} 
+                      onPress={() => this.props.navigation.navigate('ListPage', {title:item.title, headerImage:item.image, category:item.title})}
+                   />
+                )}
+                keyExtractor={item => item.title}
+              />
            </View>
          </ScrollView>
       </View>

@@ -4,37 +4,37 @@ import Card from '../Card'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import { Text } from 'native-base'
 import image from '../../imgs/kids.jpg'
+import RatingComponent from '../ratingComponent'
+
 
 class EventCard extends Component{
     render(){
       return(
           <TouchableHighlight
              activeOpacity={1} 
-            onPress={() => this.props.onPress('company name', image)} 
-             style={{margin:20, borderRadius:20}}
+            onPress={() => this.props.onPress('Kaldis Coffee', image)} 
+             style={styles.touchable}
           >
               <ImageBackground 
-                  source={require('../../imgs/cafe.jpg')} 
+                  source={this.props.eventImage} 
                   style={styles.imageBackground} 
+                  imageStyle={{borderRadius:20}}
                   resizeMode="cover"
                 >
                   <View style={styles.overlayText}>
-                      <Text 
-                        style={{color:'white', fontWeight:'bold', paddingBottom:5, paddingLeft:5, fontSize:22}}>
-                        Lorem Ipsum
-                      </Text>
-                      <View style={{flexDirection:'row'}}>
-                        <EvilIcons name="location" color='white' size={26} />
-                        <Text style={{color:'white'}} note>Bole Wolo sefer</Text>
+                      <View>
+                          <Text 
+                            style={{color:'white', fontWeight:'800', paddingBottom:5, paddingLeft:5, fontSize:30}}>
+                            Lorem Ipsum
+                          </Text>
+                          <View style={{flexDirection:'row'}}>
+                            <EvilIcons name="location" color='white' size={26} />
+                            <Text style={{color:'white'}} note>Bole Wolo sefer</Text>
+                          </View>
                       </View>
+                      <RatingComponent color={'yellow'}/>
                   </View>
 
-                  <View style={styles.overlayText}>
-                      <Text style={{color:'white'}}>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                          tempor...
-                      </Text>
-                  </View>
               </ImageBackground>
           </TouchableHighlight>
       )
@@ -43,20 +43,30 @@ class EventCard extends Component{
 
 
 const styles = StyleSheet.create({
+
+ touchable:{ 
+      margin:20,
+      borderRadius:20,
+      overflow:'hidden',
+      width:'90%',
+      height:200,
+      backgroundColor:'#eaeaea'
+  },
   imageBackground:{
-    width: '100%', 
-    height:260,
     borderRadius:20, 
-    justifyContent:'space-between'
+    height:200,
+    justifyContent:'space-between',
   },
   overlayText:{
     fontSize:18,
     color:'white',
     padding:25,
-    textShadowColor: 'rgba(0, 0, 0, 1)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 10,
-    backgroundColor:'rgba(0, 0, 0, .5)'
+    justifyContent:'space-around',
+    textShadowColor: 'rgba(0, 0, 0, 3)',
+    textShadowOffset: {width: -1, height: 4},
+    textShadowRadius: 20,
+    backgroundColor:'rgba(0, 0, 0, .6)',
+    flex:1
   }
 })
 

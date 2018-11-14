@@ -1,33 +1,65 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { Font, AppLoading } from 'expo'
 
+class Header extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      isFontLoading:false
+    }
+  }
+  
+  componentDidMount() {
+    this._loadAssetsAsync()
+  }
 
-const Header = (props) => {
+    async _loadAssetsAsync(){
+      try {
+        await Font.loadAsync({
+          'igFont': require('../../../assets/fonts/igFont.ttf'),
+          'Catull': require('../../../assets/fonts/Catull.ttf')
+        });
+      }
+      catch(e) {
+        Log.error(e);
+      }
+      finally {
+        this.setState({isFontLoading: true});
+      }
+    }
 
-  let headerTextStyles = styles.headerText;
-  if(props.fontSize){
-    headerTextStyles = {fontSize:20, color:'#1C2331', fontWeight:'bold'}
-  } 
+  render(){
+    let headerTextStyles = {...styles.headerText };
 
-  return(
-    <View style={styles.headerStyle}>
-      <Text style={headerTextStyles}>{props.headerText}</Text>
-    </View>
-  )
+    if(this.props.fontSize){
+      headerTextStyles = {fontSize:20, color:'#03071e', fontFamily:'Catull'}
+    } 
+
+    if(!this.state.isFontLoading){
+      return <AppLoading />
+    }
+
+    return(
+      <View style={styles.headerStyle}>
+        <Text style={headerTextStyles}>{this.props.headerText}</Text>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   headerStyle:{
-  		height:75,
-  		backgroundColor:'#fff',
-  		justifyContent:'flex-end',
-  		alignItems:'flex-start',
-      padding:20
+  		height:50,
+  		backgroundColor:'white',
+  		justifyContent:'center',
+  		alignItems:'center',
   },
   headerText:{
-  	color:'#1C2331',
-  	fontSize:27,
-  	fontWeight:'bold',
+  	color:'#090b35',
+  	fontSize:38,
+    fontFamily:'igFont',
+    fontWeight:'900'
   }
 })
 

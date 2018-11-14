@@ -12,6 +12,7 @@ const BannerHeight = 260;
 const images = [ cafe, clubs, hotel ];
  
 class ImageCarousel extends React.Component {
+
     renderPage(image, index) {
         return (
             <View key={index}>
@@ -19,6 +20,7 @@ class ImageCarousel extends React.Component {
             </View>
         );
     }
+
      render() {
         return (
             <View style={styles.container}>
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 });
 

@@ -15,7 +15,7 @@ class MapModal extends Component{
              backdropTransitionOutTiming={700}
           >
             <View style={{ flex: 1, padding:20}}>
-              <Ionicons name="ios-close-circle"  color="white" size={32} onPress={this.props.hideModal}/>
+              <Ionicons name="ios-close-circle"  color="white" size={32} onPress={() => this.props.hideModal('map')}/>
               <MapComponent />
             </View>
           </Modal>

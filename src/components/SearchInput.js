@@ -12,8 +12,13 @@ class SearchInput extends Component {
             <Icon name="ios-search" />
             <Input placeholder="Search" />
           </Item>
-          <Button transparent style={{marginLeft:0, paddingLeft:0}} onPress={() => Keyboard.dismiss()}>
-            <Text>Cancel</Text>
+          <Button 
+             transparent style={{marginLeft:0, paddingLeft:0}} 
+             onPress={() => Keyboard.dismiss()}
+          >
+            <Text>
+              Cancel
+            </Text>
           </Button>
         </Header>
       </Container>
