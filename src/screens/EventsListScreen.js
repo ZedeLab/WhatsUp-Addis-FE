@@ -25,6 +25,7 @@ class EventsListScreen extends Component{
 							renderItem={({item}) => (
 								<EventCard 
 									eventImage={item.image}
+									category={title}
 									onPress={(name, image) => 
 										this.props.navigation.navigate('Event', {title:name, headerImage:item.image, category:title})
 									}

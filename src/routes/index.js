@@ -51,7 +51,9 @@ const ListPageBottomTab = createMaterialTopTabNavigator({
 			},
 			style:{
 				backgroundColor:'#fff',
-				paddingBottom:0
+				paddingBottom:0,
+				borderTopWidth:.4,
+				borderTopColor:'#c1c1c1'
 			},
 			indicatorStyle:{
 				backgroundColor:null
@@ -96,7 +98,9 @@ const BottomTab = createMaterialTopTabNavigator({
 			style:{
 				backgroundColor:'#fff',
 				padding:0,
-				margin:0
+				margin:0,
+				borderTopWidth:.4,
+				borderTopColor:'#c1c1c1'
 			},
 			indicatorStyle:{
 				backgroundColor:null
@@ -123,7 +127,10 @@ const Router = createStackNavigator({
   		}
   	},
   	Event:{
-  		screen:EventScreen
+  		screen:EventScreen,
+  		navigationOptions:{
+  			header:null
+  		}
   	}
 })
  

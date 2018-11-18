@@ -4,19 +4,17 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
 
 const EventDescription = (props) => {
     return (
-        <Content>
-          <Card>
-            <CardItem>
-              <Body>
-                <Text style={{fontFamily:'abel-regular'}}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo .
-                </Text>
-              </Body>
-            </CardItem>
+          <Card style={{marginTop:10, borderRadius:15, backgroundColor:'white', padding:15}}>
+              <Text style={{fontFamily:'abel-regular'}}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo .
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo .
+              </Text>
          </Card>
-        </Content>
+
     );
 }
 

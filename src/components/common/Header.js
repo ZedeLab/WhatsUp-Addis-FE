@@ -54,12 +54,14 @@ const styles = StyleSheet.create({
   		backgroundColor:'white',
   		justifyContent:'center',
   		alignItems:'center',
+      borderBottomWidth:.4,
+      borderBottomColor:'#c1c1c1'
   },
   headerText:{
   	color:'#090b35',
   	fontSize:38,
     fontFamily:'igFont',
-    fontWeight:'900'
+    fontWeight:'900',
   }
 })
 

@@ -17,7 +17,7 @@ export const categories = [
 		image:cinema
 	},
 	{
-		title:'Event',
+		title:'Events',
 		image:event
 	},
 	{

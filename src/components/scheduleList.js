@@ -31,31 +31,31 @@ class ScheduleList extends Component {
 
 
   _renderContent = (content) => {
-    return (
-      content.movies.map(movie => (
-         <Card key={movie.id} style={styles.contentStyle}>
-            <View style={{flexDirection:'row', justifyContent:'space-around'}}>
-                  <Image 
-                    source={require('../imgs/avengers.jpg')} 
-                    style={{width:90, height:100, flex:1, paddingLeft:10, borderRadius:70, overflow:'hidden'}} 
-                  />
+      return (
+        content.movies.map(movie => (
+           <Card key={movie.id} style={styles.contentStyle}>
+              <View style={{flexDirection:'row', flex:1, justifyContent:'space-between', backgroundColor:'rgba(0, 0, 0, .3)', borderRadius:15}}>
+                    <Image 
+                      source={require('../imgs/avengers.jpg')} 
+                      style={{width:80, height:80, marginHorizontal:20, borderRadius:40, overflow:'hidden'}} 
+                    />
 
-                <View style={{flex:1}}>
-                    <Text style={{padding: 10 , color:'white'}} >
-                      {movie.time}
-                    </Text>
-                    {
-                      <Text style={{padding: 10, fontWeight:'bold', fontSize:24, fontFamily:'abel-regular', color:'white'}}>
-                        {movie.movie}
+                  <View style={{flex:1}}>
+                      <Text style={{padding: 10 , color:'white'}} >
+                        {movie.time}
                       </Text>
-                    }
-                </View>
+                      {
+                        <Text style={{padding: 10, fontWeight:'bold', fontSize:24, fontFamily:'abel-regular', color:'white'}}>
+                          {movie.movie}
+                        </Text>
+                      }
+                  </View>
 
-            </View>
-          </Card>
-          
-      ))
-    );
+              </View>
+            </Card>
+            
+        ))
+      );
   }
 
 

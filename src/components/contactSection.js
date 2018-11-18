@@ -9,7 +9,7 @@ const ContactSection = (props) => {
 		return(
 			<Content>
 				<Text style={{marginTop:10, paddingLeft:10, fontWeight:'bold'}}>Contacts</Text>
-				<Card>
+				<Card style={{borderRadius:15, backgroundColor:'white', padding:15}}>
 
 					<View style={{flexDirection:'row', justifyContent:'space-between', padding:10}}>
 	              <Icon  name="logo-facebook" style={{color:'#3b5998'}}/>
@@ -19,12 +19,12 @@ const ContactSection = (props) => {
 
 	            <View style={{borderWidth:.5, borderColor:'#cccccc', padding:10 }}>
 	            	<View style={{paddingBottom:10, flexDirection:'row', justifyContent:'space-between', borderBottomWidth:.5, borderBottomColor:'#cccccc'}}>
-           			   <MaterialCommunityIcons name="email-outline" size={32} />
+           			   <MaterialCommunityIcons name="email-outline" size={32} color="#090b35" />
 		            	<Text style={styles.textStyle}>whastupaddis@gmail.com</Text>
 		            </View>
 
 		            <View style={{flexDirection:'row', justifyContent:'space-between', padding:10}}>
-		            	<FontAwesome name="phone" size={32} style={{flex:1}}/>
+		            	<FontAwesome name="phone" size={32} style={{flex:1}} color="#090b35" />
 		            	<View style={{flex:2, alignItems:'center'}}>
 			            	<Text style={styles.textStyle}>+251911056281</Text>
 			            	<Text style={styles.textStyle}>+251911719467</Text>

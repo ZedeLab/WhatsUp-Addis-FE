@@ -1,22 +1,27 @@
 import React from 'react';
 import Carousel from 'react-native-banner-carousel';
-import { StyleSheet, Image, View, Dimensions } from 'react-native';
+import { StyleSheet, Image, View, Dimensions, Platform } from 'react-native';
 import cafe from '../imgs/cafe.jpg'
 import clubs from '../imgs/clubs.jpg'
 import hotel from '../imgs/hotel.jpg'
+import menu from '../imgs/menu.jpg'
 
- 
+
+
 const BannerWidth = Dimensions.get('window').width;
 const BannerHeight = 260;
  
 const images = [ cafe, clubs, hotel ];
+restaurantMenu = [ menu, menu ]
  
 class ImageCarousel extends React.Component {
 
     renderPage(image, index) {
         return (
             <View key={index}>
-                <Image style={{ width: BannerWidth, height: BannerHeight }} source={image} />
+                <Image 
+                 style={{ width: this.props.forModal ? null: BannerWidth, height: this.props.forModal ? '100%' : BannerHeight 
+                }} source={image} resizeModa="cover" />
             </View>
         );
     }
@@ -25,13 +30,18 @@ class ImageCarousel extends React.Component {
         return (
             <View style={styles.container}>
                 <Carousel
-                    autoplay
+                    autoplay={this.props.forModal ? false : true}
                     autoplayTimeout={5000}
                     loop
                     index={0}
-                    pageSize={BannerWidth}
+                    pageSize={this.props.forModal ? 300 : BannerWidth}
+
                 >
-                    {images.map((image, index) => this.renderPage(image, index))}
+                    {
+                        this.props.forModal ?
+                        restaurantMenu.map((image, index) => this.renderPage(image, index))
+                        : images.map((image, index) => this.renderPage(image, index))
+                    }
                 </Carousel>
             </View>
         );
@@ -43,6 +53,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         justifyContent: 'center',
+        alignItems:'center'
     },
 });
 

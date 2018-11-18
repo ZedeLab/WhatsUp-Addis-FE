@@ -27,12 +27,31 @@ class EventCard extends Component{
                             style={{color:'white', fontWeight:'800', paddingBottom:5, paddingLeft:5, fontSize:30}}>
                             Lorem Ipsum
                           </Text>
-                          <View style={{flexDirection:'row'}}>
-                            <EvilIcons name="location" color='white' size={26} />
-                            <Text style={{color:'white'}} note>Bole Wolo sefer</Text>
-                          </View>
+                          {
+                            this.props.category === 'Jobs' 
+                              ?
+                              /* This will render the Job field : eg: software eng job */
+                                <View>
+                                  <Text style={{color:'white', fontSize:20}}>Software Engineering</Text>
+                                </View>
+                              :
+                                <View style={{flexDirection:'row'}}>
+                                  <EvilIcons name="location" color='white' size={26} />
+                                  <Text style={{color:'white'}} note>Bole Wolo sefer</Text>
+                                </View>
+                          }
                       </View>
-                      <RatingComponent color={'yellow'}/>
+                      {
+                        /*** Do not show rating if the category is for jobs **/
+                        this.props.category === 'Jobs' ? null :
+                        this.props.category === 'Events' ? 
+                          <View>
+                            <Text style={{color:"white"}}>May 22, 10:00 - 12:00</Text>
+                          </View>
+                      :
+                          <RatingComponent color={'yellow'}/>
+                      }
+                        
                   </View>
 
               </ImageBackground>

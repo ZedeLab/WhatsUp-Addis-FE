@@ -8,36 +8,36 @@ import { categories } from '../config/categories'
 
 class CategoryScreen extends Component{
 
-
-  render() {
-    return (
-      <View style={styles.container}>
-         <View style={styles.headerStyle}>
-            <Header headerText={'What are you looking for ?'} fontSize={'small'}/>
-         </View>
-         <ScrollView>
-           <View style={styles.overlayCard}>
-              <FlatList 
-                data={categories}
-                renderItem = {({item}) => (
-                    <CardOverlay 
-                      cardText={item.title} 
-                      background={item.image} 
-                      onPress={() => this.props.navigation.navigate('ListPage', {title:item.title, headerImage:item.image, category:item.title})}
-                   />
-                )}
-                keyExtractor={item => item.title}
-              />
+    render() {
+      return (
+        <View style={styles.container}>
+           <View style={styles.headerStyle}>
+              <Header headerText={'What are you looking for ?'} fontSize={'small'}/>
            </View>
-         </ScrollView>
-      </View>
-    );
-  }
+           <ScrollView>
+             <View style={styles.overlayCard}>
+                <FlatList 
+                  data={categories}
+                  renderItem = {({item}) => (
+                      <CardOverlay 
+                        cardText={item.title} 
+                        background={item.image} 
+                        onPress={() => this.props.navigation.navigate('ListPage', {title:item.title, headerImage:item.image, category:item.title})}
+                     />
+                  )}
+                  keyExtractor={item => item.title}
+                />
+             </View>
+           </ScrollView>
+        </View>
+      );
+    }
 }
 
 const styles = StyleSheet.create({
   container:{
-    flex:1
+    flex:1,
+    backgroundColor:'#f4f2f2'
   },
   headerStyle:{
     marginBottom:20

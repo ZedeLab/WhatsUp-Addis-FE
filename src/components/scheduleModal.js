@@ -14,7 +14,7 @@ class ScheduleModal extends Component{
 	             backdropTransitionOutTiming={700}
 	          >
 	            <View style={{flex: 1, width:null}}>
-	              <Ionicons name="ios-close-circle"  color="white" size={32} onPress={() => this.props.hideModal('cinema')}/>
+	              <Ionicons name="ios-close-circle"  color="white" size={38} onPress={() => this.props.hideModal('cinema')}/>
 	             <ScheduleList />
 	            </View>
 	          </Modal>

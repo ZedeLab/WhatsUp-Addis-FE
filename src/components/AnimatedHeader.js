@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
-import { Text, View, ImageBackground, StyleSheet } from 'react-native'
+import { Animated, Text, View, ImageBackground, StyleSheet } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { AppLoading , Font } from 'expo'
 
-class HeaderImage extends Component {
+
+const maxHeaderHeight = 150;
+const minHeaderHeight = 60;
+
+
+class AnimatedHeader extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -18,7 +23,7 @@ class HeaderImage extends Component {
     async _loadAssetsAsync(){
       try {
         await Font.loadAsync({
-          'Catull': require('../../../assets/fonts/Catull.ttf')
+          'Catull': require('../../assets/fonts/Catull.ttf')
         });
       }
       catch(e) {
@@ -32,12 +37,29 @@ class HeaderImage extends Component {
 
    render(){
 
+		const headerHeight = this.props.scrollY.interpolate({
+			inputRange:[0, maxHeaderHeight - minHeaderHeight],
+			outputRange:[maxHeaderHeight, minHeaderHeight],
+			extrapolate:'clamp'
+		})
+
+		const titleHeight = this.props.scrollY.interpolate({
+			inputRange:[20, 35],
+			outputRange:[35, 20],
+			extrapolate:'clamp',
+		})
+
+
+
 		if(!this.state.isFontLoading){
 			return <AppLoading />
 		}
 
 		return(
-			<View style={styles.headerContainer}>
+			<Animated.View style={{
+				...styles.headerContainer,
+				height:headerHeight
+			}}>
 				<ImageBackground
 					source={this.props.image} 
 					style={styles.imageStyle} 
@@ -47,15 +69,21 @@ class HeaderImage extends Component {
 						<Ionicons 
 							name="md-arrow-back" 
 							color="white" 
-							size={35} 
-							onPress={this.props.fromCategory ? this.props.goBack : () => this.props.navigation.goBack(null)} style={styles.iconStyle}
+							size={30} 
+							onPress={this.props.goBack} 
+							style={styles.iconStyle}
 						/>
-						<Text style={styles.headerTitle}>
+						<Animated.Text 
+							style={{
+								...styles.headerTitle,
+								fontSize:titleHeight,
+							}}
+						>
 							{this.props.title}
-						</Text>
+						</Animated.Text>
 					</View>
 				</ImageBackground>
-			</View>
+			</Animated.View>
 		)
 	}
 }
@@ -65,30 +93,30 @@ const styles = StyleSheet.create({
 		backgroundColor:'#d8d6d6',
 		justifyContent:'flex-end',
 		alignItems:'center',
-		height:50,
-
+		margin:0,
 	},
 	imageStyle:{
 		width:'100%', 
 		height:'100%',  
-		flexDirection:'row',
-		justifyContent:'flex-start',
-		alignItems:'center', 
+		flexDirection:'column', 
+		justifyContent:'space-between', 
+		alignItems:'flex-start',
+		backgroundColor:'rgba(0, 0, 0, .3)',
 		position:'absolute', 
 		top:0, 
 		left:0,
 		right:0,
-		backgroundColor:'rgba(0, 0, 0, .2)'
 	},
 	headerTitle:{
 		color:'white',
-		fontWeight:'800',
 		fontSize:35,
 		paddingLeft:20,
-		textShadowColor: 'rgba(0, 0, 0, 5)',
+		textShadowColor: 'rgba(0, 0, 0, .5)',
 	   textShadowOffset: {width: -1, height:1 },
 	   textShadowRadius:5,
-	   fontFamily:'Catull'
+	   fontFamily:'Catull',
+	  	paddingBottom:15, 
+		fontWeight:'600',
 	},
 	iconStyle:{
 		paddingLeft:20,
@@ -97,4 +125,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default HeaderImage
+export default AnimatedHeader
