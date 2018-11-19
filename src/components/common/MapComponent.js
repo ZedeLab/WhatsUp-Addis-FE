@@ -113,6 +113,7 @@ class MapComponent extends Component{
 		if(this.state.isSpinning){
 			this.showSpinner()
 		}
+
 		else {
 			return (
 				<View style={{flex:1}}>
@@ -131,7 +132,6 @@ class MapComponent extends Component{
 			       region={this.state.region}
 			       zoomEnabled={true}
 	         	 ref={ref => { this.mapView = ref }}
-	         	 loadingEnabled
 	         	 loadingIndicatorColor="#666666"
 	         	 loadingBackgroundColor="#eeeeee"
 			      >
