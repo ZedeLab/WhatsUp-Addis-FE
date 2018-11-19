@@ -4,11 +4,10 @@ import MapComponent from '../components/common/MapComponent'
 
 
 class NearYou extends Component {
-
 	render(){
 		return(
 			<View style={styles.containerStyle}>
-				<MapComponent />
+				<MapComponent navigation={this.props.navigation} nearYou={true} />
 			</View>
 		)
 	}

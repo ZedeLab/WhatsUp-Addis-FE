@@ -21,7 +21,7 @@ const ListPageBottomTab = createMaterialTopTabNavigator({
 		}
 	},
 	['Near you']:{
-		screen:NearYou,
+		screen:props => <NearYou {...props} />,
 		navigationOptions:{
 			tabBarIcon:({tintColor}) => {
 				return <EvilIcons name="location" color={tintColor} size={26} />

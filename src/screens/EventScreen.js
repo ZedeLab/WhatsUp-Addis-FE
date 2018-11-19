@@ -261,6 +261,8 @@ class EventScreen extends Component{
 	}
 }
 
+
+
 const styles = StyleSheet.create({
 	eventScreen:{
 		flex:1,
