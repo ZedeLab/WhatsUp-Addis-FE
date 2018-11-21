@@ -22,6 +22,7 @@ class MapComponent extends Component{
 		}
 	}
 
+
 	componentDidMount(){
 		this.setState({isSpinning:true})
 		Permissions.askAsync('location')
@@ -37,8 +38,7 @@ class MapComponent extends Component{
 							latitudeDelta:0.00922*1.5,
 						}
 						/** Here there will be a function call that will detect the nearby places **/
-						this.onRegionChange(region, position.coords.accuracy)
-						this.mapView.animateToRegion(region, 1000)
+							this.onRegionChange(region, position.coords.accuracy)
 					})
 				}
 				else {
@@ -50,7 +50,6 @@ class MapComponent extends Component{
 						latitudeDelta:0.00922*1.5
 					}
 					this.setState({region:region, markerType:'pin'})
-					this.mapView.animateToRegion(region, 1000)
 				}
 		}})
 		.catch(error => {
@@ -74,6 +73,7 @@ class MapComponent extends Component{
 		/*  This maybe the place where its good to fetch places near  users position */
 		this.setState({region:region, gpsAccuracy:accuracy})
 	}
+
 
 	showSpinner = () => {
 		return(
@@ -102,7 +102,10 @@ class MapComponent extends Component{
 	}
 
 	showPlaceDirection = () => {
-		/* When this component is used to show the direction of a specific place we return a marker of that specific location */
+		/* 
+			When this component is used to show the direction of a specific place 
+			we return a marker of that specific location 
+		*/
 		return null
 	}
 

@@ -134,9 +134,9 @@ class EventScreen extends Component{
 
 	addToCalendar = () => {
 		let eventDetails = {
-			title:`Joni's Birthday`,
-			startDate: new Date('2019-01-03'),
-			endDate: new Date('2019-01-05')
+			title:`simon's Birthday`,
+			startDate: new Date('2019-02-03'),
+			endDate: new Date('2019-05-05')
 		}
 
 		Permissions.askAsync('calendar')
@@ -147,7 +147,7 @@ class EventScreen extends Component{
 						this.dropdown.alertWithType('success', '', 'Event added to your calendar')
 					})
 					.catch(error => {
-						this.dropdown.alertWithType('error', '', 'Failed to add event to your calender, Please try again')
+						this.dropdown.alertWithType('error', '', 'Failed')
 					})
 			}
 		})
