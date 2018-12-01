@@ -20,6 +20,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-banner-carousel": "^1.0.3",
     "react-native-calendar-events": "^1.6.3",
+    "react-native-drawer": "^2.5.1",
     "react-native-dropdownalert": "^3.7.0",
     "react-native-modal": "^7.0.0",
     "react-native-star-rating": "^1.1.0",

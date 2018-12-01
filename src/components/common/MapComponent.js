@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet, Animated } from 'react-native'
-import { Spinner } from 'native-base'
-import { MapView, Permissions, Location } from 'expo'
-import CustomCallout from '../customCallout'
+import { View, Text, Image, StyleSheet, Animated, TouchableOpacity, Platform } from 'react-native'
+import { Spinner, Card } from 'native-base'
+import { MapView, Permissions, Location, Constants } from 'expo'
+// import CustomCallout from '../customCallout'
 import { nearPlaces } from '../../config/sampleNearPlaces'
 import event from '../../imgs/events2.jpg'
 
@@ -34,8 +34,8 @@ class MapComponent extends Component{
 						let region = {
 							latitude:position.coords.latitude, 
 							longitude:position.coords.longitude,
-							longitudeDelta:0.00421*1.5,
-							latitudeDelta:0.00922*1.5,
+							longitudeDelta:0.0042 / 1.5,
+							latitudeDelta:0.00922 / 1.5,
 						}
 						/** Here there will be a function call that will detect the nearby places **/
 							this.onRegionChange(region, position.coords.accuracy)
@@ -46,8 +46,8 @@ class MapComponent extends Component{
 					const region = {
 						latitude:9.022161742,
 						longitude:38.748253321,
-						longitudeDelta:0.00421*1.5,
-						latitudeDelta:0.00922*1.5
+						longitudeDelta:0.0042 / 2,
+						latitudeDelta:0.00922 / 2
 					}
 					this.setState({region:region, markerType:'pin'})
 				}
@@ -92,9 +92,26 @@ class MapComponent extends Component{
 				       	key={place.name}
 					      coordinate={{latitude:place.coordinate[0], longitude:place.coordinate[1]}}
 					    >
-					    	<CustomCallout 
-					    	  onPress={(title) => this.props.navigation.navigate('Event', {title:title, headerImage:event, category:'Events'})}
-					    	/>
+					    	<TouchableOpacity 
+								 onPress={
+					    	  		() => this.props.navigation.navigate('Event', {
+					    	  		title:'Radisson Hotel', 
+					    	  		headerImage:event, 
+					    	  		category:'Events'
+					    	  	})}
+					    	  	 style={{justifyContent:'center', alignItems:'center'}}
+							>
+								<Card style={{
+										flexDirection:'row', 
+										justifyContent:'center', 
+										alignItems:'center', 
+										borderRadius:10, 
+									}}
+								>
+							 		<Text style={{padding:10}}>Radisson Hotel</Text>
+							 	</Card>
+							 	<Image source={require('../../imgs/location.png')} style={{width:20, height:20}}/>
+							</TouchableOpacity>
 					    </MapView.Marker>
 					))}
 			   </View>
@@ -121,6 +138,7 @@ class MapComponent extends Component{
 			return (
 				<View style={{flex:1}}>
 				{ this.props.nearYou ?
+					/* tells which category its showing */
 					<View style={styles.mapTitle}>
 						<Text style={{fontSize:18}}> 
 							Events near you 
@@ -130,7 +148,8 @@ class MapComponent extends Component{
 				 	null
 				}
 				  <MapView
-			       style={{ flex: 1 }}
+				  	 provider={MapView.PROVIDER_GOOGLE}
+			       style={{ flex: 1, zIndex:0 }}
 			       showUserLocation={true}
 			       region={this.state.region}
 			       zoomEnabled={true}
@@ -141,17 +160,18 @@ class MapComponent extends Component{
 
 
 			      {/* Marker of users current location */}
-			      <Marker coordinate={{latitude:this.state.region.latitude, longitude:this.state.region.longitude}}>
-			      {this.state.markerType === 'pin' ?
-			      	<View>
-			      		<Image source={require('../../imgs/location.png')} style={{width:40, height:40}} />
-			      	</View>
-			      :
-			 			<View style={styles.radius}>
-							<View style={styles.marker}/>
-						 </View>
-			      }
-					</Marker>
+				      <Marker coordinate={{latitude:this.state.region.latitude, longitude:this.state.region.longitude}}>
+					      {
+						      this.state.markerType === 'pin' ?
+						      	<View>
+						      		<Image source={require('../../imgs/location.png')} style={{width:40, height:40}} />
+						      	</View>
+						      :
+						 			<View style={styles.radius}>
+										<View style={styles.marker} />
+									</View>
+					      }
+						</Marker>
 
 					{
 			      /**********
@@ -178,7 +198,7 @@ const styles = StyleSheet.create({
 		marginTop:25, 
 		width:200,
 		zIndex:3,
-		backgroundColor:'#fff0d6',
+		backgroundColor:'rgba(206, 200, 200, .5)',
 		justifyContent:"center",
 		alignItems:'center'
 	},

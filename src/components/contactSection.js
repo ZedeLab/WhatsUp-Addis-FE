@@ -8,7 +8,9 @@ import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'
 const ContactSection = (props) => {
 		return(
 			<Content>
-				<Text style={{marginTop:10, paddingLeft:10, fontWeight:'bold'}}>Contacts</Text>
+				<Text style={{marginTop:10, paddingLeft:10, fontWeight:'bold'}}>
+					Contacts
+				</Text>
 				<Card style={{borderRadius:15, backgroundColor:'white', padding:15}}>
 
 					<View style={{flexDirection:'row', justifyContent:'space-between', padding:10}}>
@@ -20,7 +22,9 @@ const ContactSection = (props) => {
 	            <View style={{borderWidth:.5, borderColor:'#cccccc', padding:10 }}>
 	            	<View style={{paddingBottom:10, flexDirection:'row', justifyContent:'space-between', borderBottomWidth:.5, borderBottomColor:'#cccccc'}}>
            			   <MaterialCommunityIcons name="email-outline" size={32} color="#090b35" />
-		            	<Text style={styles.textStyle}>whastupaddis@gmail.com</Text>
+		            	<Text style={styles.textStyle}>
+		            		whastupaddis@gmail.com
+		            	</Text>
 		            </View>
 
 		            <View style={{flexDirection:'row', justifyContent:'space-between', padding:10}}>

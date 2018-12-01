@@ -16,7 +16,7 @@ const ListPageBottomTab = createMaterialTopTabNavigator({
 		screen:EventsListScreen,
 		navigationOptions:{
 			tabBarIcon:({tintColor}) => (
-				<Icon name="ios-menu" color={tintColor} size={24}/>
+				<Icon name="ios-menu" color={tintColor} size={24} />
 			),
 		}
 	},
